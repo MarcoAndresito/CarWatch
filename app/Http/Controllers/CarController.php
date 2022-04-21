@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
-class AutoController extends Controller
+class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class AutoController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Car/Index');
     }
 
     /**
@@ -23,7 +24,7 @@ class AutoController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Car/Create');
     }
 
     /**
@@ -45,7 +46,7 @@ class AutoController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('Car/Show');
     }
 
     /**
@@ -56,7 +57,7 @@ class AutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('Car/Edit');
     }
 
     /**
