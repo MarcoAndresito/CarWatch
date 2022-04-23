@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \App\Models\Car;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class CarController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Car/Index');
+        $result = Car::all();
+
+        return Inertia::render('Car/Index', [
+            'cars' => $result,
+        ]);
     }
 
     /**
