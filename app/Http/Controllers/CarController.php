@@ -40,7 +40,17 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'registration' => 'required',
+            'name' => 'required',
+            'nit' => 'required'
+        ]);
+
+        $data = $request->all();
+
+        Car::create($data);
+
+        return redirect()->route('car.index');
     }
 
     /**
@@ -62,7 +72,13 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        return Inertia::render('Car/Edit');
+        $car = Car::find($id);
+
+
+
+        return Inertia::render('Car/Edit', [
+            'car' => $car
+        ]);
     }
 
     /**
