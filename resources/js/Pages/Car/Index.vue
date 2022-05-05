@@ -1,10 +1,22 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
+import JetLabel from "@/Jetstream/Label.vue";
+import JetInput from "@/Jetstream/Input.vue";
+import JetButton from "@/Jetstream/Button.vue";
 
 defineProps({
   cars: Array,
 });
+
+const form = useForm({
+  filter: '',
+});
+
+const search = () => {
+  form.get(route("car.index"));
+};
+
 </script>
 
 <template>
@@ -22,7 +34,12 @@ defineProps({
           >
         </div>
         <div class="col-span-2 bg-white p-5 rounded">
-          <table class="w-full">
+          <div class="flex flex-row">
+            <JetLabel for="filter" value="Buscar :" />
+            <JetInput id="filter" v-model="form.filter" type="text" class="ml-5" />
+            <JetButton @click="search">Buscar</JetButton>
+          </div>
+          <table class="w-full mt-5">
             <tr class="text-2xl bg-gray-800 text-gray-100">
               <th>Placa</th>
               <th>Tipo Vehiculo</th>

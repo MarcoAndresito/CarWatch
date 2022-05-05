@@ -15,8 +15,13 @@ class CarController extends Controller
      */
     public function index()
     {
-        $result = Car::all();
-
+        $result = null;
+        if (request()->has('filter') && request()->filled('filter')) {
+            $filter = '%' . request()->get('filter') . '%';
+            $result = Car::where('registration', 'like', $filter)->get();
+        } else {
+            $result = Car::all();
+        }
         return Inertia::render('Car/Index', [
             'cars' => $result,
         ]);
@@ -61,7 +66,10 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        return Inertia::render('Car/Show');
+        $car = Car::find($id);
+        return Inertia::render('Car/Show', [
+            'car' => $car
+        ]);
     }
 
     /**
@@ -90,7 +98,25 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'registration' => 'required',
+            'name' => 'required',
+            'nit' => 'required',
+            'type' => 'required'
+        ]);
+
+        $data = $request->all();
+
+        $car = Car::find($id);
+
+        $car->registration = $data['registration'];
+        $car->name = $data['name'];
+        $car->nit = $data['nit'];
+        $car->type = $data['type'];
+
+        $car->update();
+
+        return redirect()->route('car.index');
     }
 
     /**
@@ -101,6 +127,8 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $car = Car::find($id);
+        $car->delete();
+        return redirect()->route('car.index');
     }
 }

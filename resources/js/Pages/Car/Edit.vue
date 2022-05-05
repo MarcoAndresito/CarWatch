@@ -18,7 +18,7 @@ const form = useForm({
 });
 
 const update = () => {
-  form.post(route("car.store"));
+  form.put(route("car.update", data.car.id));
 };
 </script>
 
@@ -67,7 +67,7 @@ const update = () => {
           </div>
         </template>
         <template #actions>
-          <JetButton>Guardar</JetButton>
+          <JetButton>Guardar Cambios</JetButton>
         </template>
       </JetFormSection>
     </div>
