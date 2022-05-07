@@ -38,4 +38,8 @@ Route::middleware([
     // rutas para auto
 
     Route::resource('car', \App\Http\Controllers\CarController::class);
+
+    // ruta para servicios
+
+    Route::resource('service', \App\Http\Controllers\ServiceController::class);
 });

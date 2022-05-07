@@ -57,14 +57,21 @@ const logout = () => {
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
                 >
-                  Dashboard
+                  Inicio
                 </JetNavLink>
 
                 <JetNavLink
                   :href="route('car.index')"
                   :active="route().current('car.index')"
                 >
-                  Car
+                  Vehiculos
+                </JetNavLink>
+
+                <JetNavLink
+                  :href="route('service.index')"
+                  :active="route().current('service.index')"
+                >
+                  Servicios
                 </JetNavLink>
               </div>
             </div>
@@ -331,14 +338,21 @@ const logout = () => {
               :href="route('dashboard')"
               :active="route().current('dashboard')"
             >
-              Dashboard
+              Inicio
             </JetResponsiveNavLink>
 
             <JetResponsiveNavLink
               :href="route('car.index')"
               :active="route().current('car.index')"
             >
-              Car
+              Vehiculos
+            </JetResponsiveNavLink>
+
+            <JetResponsiveNavLink
+              :href="route('service.index')"
+              :active="route().current('service.index')"
+            >
+              Servicios
             </JetResponsiveNavLink>
           </div>
 
