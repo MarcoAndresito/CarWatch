@@ -16,7 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         return Inertia::render('Service/Index', [
-            'services' => Service::all(),
+            'services' => Service::all()->where('disable', '=', 0),
         ]);
     }
 
@@ -101,7 +101,10 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $service->delete();
+        $service->disable = true;
+
+        $service->update();
+
         return redirect()->route('service.index');
     }
 }

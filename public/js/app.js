@@ -24308,8 +24308,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_FormSection_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/FormSection.vue */ "./resources/js/Jetstream/FormSection.vue");
 /* harmony import */ var _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Label.vue */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_Input_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input.vue */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Button.vue */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Checkbox.vue */ "./resources/js/Jetstream/Checkbox.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Button.vue */ "./resources/js/Jetstream/Button.vue");
+
 
 
 
@@ -24318,21 +24320,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    car: Object
+    service: Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
     var data = __props;
-    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm)({
-      registration: data.car.registration,
-      type: data.car.type,
-      name: data.car.name,
-      nit: data.car.nit
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm)({
+      name: data.service.name,
+      description: data.service.description,
+      price: data.service.price,
+      offer: data.service.offer == 1 ? true : false,
+      discount: data.service.discount,
+      disable: data.service.disable == 1 ? true : false
     });
 
     var update = function update() {
-      form.put(route("car.update", data.car.id));
+      form.put(route("service.update", data.service.id));
     };
 
     var __returned__ = {
@@ -24343,8 +24347,9 @@ __webpack_require__.r(__webpack_exports__);
       JetFormSection: _Jetstream_FormSection_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       JetLabel: _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       JetInput: _Jetstream_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm,
-      JetButton: _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+      JetCheckbox: _Jetstream_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm,
+      JetButton: _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -24439,7 +24444,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    car: Object
+    service: Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -24455,16 +24460,16 @@ __webpack_require__.r(__webpack_exports__);
       modal.value = false;
     };
 
-    var deleteCar = function deleteCar() {
+    var deleteService = function deleteService() {
       var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_6__.useForm)();
-      form["delete"](route("car.destroy", data.car.id));
+      form["delete"](route("service.destroy", data.service.id));
     };
 
     var __returned__ = {
       modal: modal,
       showModal: showModal,
       hideModal: hideModal,
-      deleteCar: deleteCar,
+      deleteService: deleteService,
       data: data,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -29434,9 +29439,9 @@ var _hoisted_1 = {
   "class": "max-w-7xl mx-auto py-10 px-8"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Editar vehiculo");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Editar servicio");
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Formulario para crear editar vehiculo");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Formulario para editar servicio");
 
 var _hoisted_4 = {
   "class": "col-span-6"
@@ -29448,10 +29453,13 @@ var _hoisted_6 = {
   "class": "col-span-6"
 };
 var _hoisted_7 = {
-  "class": "col-span-6"
+  "class": "col-span-3"
+};
+var _hoisted_8 = {
+  "class": "col-span-3"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Guardar Cambios");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Guardar Cambios");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["AppLayout"], null, {
@@ -29467,53 +29475,65 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         form: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
-            "for": "registration",
-            value: "Placa del vehiculo"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
-            id: "registration",
-            type: "text",
-            modelValue: $setup.form.registration,
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-              return $setup.form.registration = $event;
-            }),
-            "class": "mt-1 block w-full"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
-            "for": "type",
-            value: "Tipo de vehiculo"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
-            id: "type",
-            type: "text",
-            modelValue: $setup.form.type,
-            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-              return $setup.form.type = $event;
-            }),
-            "class": "mt-1 block w-full"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
             "for": "name",
-            value: "Nombre del conductor"
+            value: "Nombre"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
             id: "name",
             type: "text",
             modelValue: $setup.form.name,
-            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
               return $setup.form.name = $event;
             }),
             "class": "mt-1 block w-full"
           }, null, 8
           /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
-            "for": "nit",
-            value: "Nit del conductor"
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
+            "for": "description",
+            value: "Descripcion"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
-            id: "nit",
+            id: "description",
             type: "text",
-            modelValue: $setup.form.nit,
-            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-              return $setup.form.nit = $event;
+            modelValue: $setup.form.description,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+              return $setup.form.description = $event;
+            }),
+            "class": "mt-1 block w-full"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
+            "for": "price",
+            value: "Precio"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
+            id: "price",
+            type: "number",
+            modelValue: $setup.form.price,
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+              return $setup.form.price = $event;
+            }),
+            "class": "mt-1 block w-full"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
+            "for": "offer",
+            value: "Oferta"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetCheckbox"], {
+            id: "offer",
+            checked: $setup.form.offer,
+            "onUpdate:checked": _cache[3] || (_cache[3] = function ($event) {
+              return $setup.form.offer = $event;
+            }),
+            name: "Oferta"
+          }, null, 8
+          /* PROPS */
+          , ["checked"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetLabel"], {
+            "for": "discount",
+            value: "Descuento"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetInput"], {
+            id: "discount",
+            type: "number",
+            modelValue: $setup.form.discount,
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+              return $setup.form.discount = $event;
             }),
             "class": "mt-1 block w-full"
           }, null, 8
@@ -29523,7 +29543,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         actions: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetButton"], null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_8];
+              return [_hoisted_9];
             }),
             _: 1
             /* STABLE */
@@ -29670,23 +29690,29 @@ var _hoisted_1 = {
   "class": "max-w-7xl mx-auto py-10 px-8"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Vehiculo");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Servicio");
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mostrar");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mostrar servicio");
 
 var _hoisted_4 = {
+  key: 0
+};
+var _hoisted_5 = {
+  key: 1
+};
+var _hoisted_6 = {
   "class": "mt-5"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Eliminar ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Eliminar ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Eliminar");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Eliminar");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Estas seguro de eliminar el vehiculo");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Estas seguro de eliminar el servicio");
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cerrar ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cerrar ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Si, Eliminar ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Si, Eliminar ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["AppLayout"], null, {
@@ -29699,19 +29725,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [_hoisted_3];
         }),
         content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "placa: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.car.registration), 1
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Nombre: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.service.name), 1
           /* TEXT */
-          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "tipo: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.car.type), 1
+          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Descripcion: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.service.description), 1
           /* TEXT */
-          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "nombre: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.car.name), 1
+          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Precio: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.service.price) + " bs.", 1
           /* TEXT */
-          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "nit: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.car.nit), 1
+          ), $props.service.offer == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_4, " En Oferta, con: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.service.discount) + " bs, de descuento! ", 1
           /* TEXT */
-          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetDangerButton"], {
+          )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.service.offer != 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_5, "sin descuento")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetDangerButton"], {
             onClick: $setup.showModal
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_5];
+              return [_hoisted_7];
             }),
             _: 1
             /* STABLE */
@@ -29721,26 +29747,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClose: $setup.hideModal
           }, {
             title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_6];
+              return [_hoisted_8];
             }),
             content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_7];
+              return [_hoisted_9];
             }),
             footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetSecondaryButton"], {
                 onClick: $setup.hideModal
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_8];
+                  return [_hoisted_10];
                 }),
                 _: 1
                 /* STABLE */
 
               }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["JetDangerButton"], {
-                onClick: $setup.deleteCar
+                onClick: $setup.deleteService
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_9];
+                  return [_hoisted_11];
                 }),
                 _: 1
                 /* STABLE */
