@@ -73,6 +73,13 @@ const logout = () => {
                 >
                   Servicios
                 </JetNavLink>
+
+                <JetNavLink
+                  :href="route('order.index')"
+                  :active="route().current('order.index')"
+                >
+                  Ordenes de servicio
+                </JetNavLink>
               </div>
             </div>
 
@@ -353,6 +360,13 @@ const logout = () => {
               :active="route().current('service.index')"
             >
               Servicios
+            </JetResponsiveNavLink>
+
+            <JetResponsiveNavLink
+              :href="route('order.index')"
+              :active="route().current('order.index')"
+            >
+              Ordernes de servicio
             </JetResponsiveNavLink>
           </div>
 

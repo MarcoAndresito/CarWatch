@@ -21,20 +21,6 @@ Route::middleware([
     Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboard'])
         ->name('dashboard');
 
-    // rutas para cliente
-
-    Route::get('/cliente', [App\Http\Controllers\ClienteController::class, 'index'])
-        ->name('cliente.index');
-
-    Route::put('/cliente/editar', [\App\Http\Controllers\ClienteController::class, 'edit'])
-        ->name('cliente.edit');
-
-    Route::delete('/cliente/eliminar', [\App\Http\Controllers\ClienteController::class, 'delete'])
-        ->name('cliente.delete');
-
-    Route::post('/cliente/nuevo', [\App\Http\Controllers\ClienteController::class, 'new'])
-        ->name('cliente.new');
-
     // rutas para auto
 
     Route::resource('car', \App\Http\Controllers\CarController::class);
@@ -42,4 +28,15 @@ Route::middleware([
     // ruta para servicios
 
     Route::resource('service', \App\Http\Controllers\ServiceController::class);
+
+    // ruta para ordenes
+
+    Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])
+        ->name('order.index');
+    Route::post('/order', [App\Http\Controllers\OrderController::class, 'store'])
+        ->name('order.store');
+    Route::get('/order/create', [App\Http\Controllers\OrderController::class, 'create'])
+        ->name('order.create');
+    Route::get('/order/{order}/dpf', [App\Http\Controllers\OrderController::class, 'dpf'])
+        ->name('order.dpf');
 });
